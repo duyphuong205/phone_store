@@ -1,18 +1,16 @@
 package com.phone.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.phone.entity.base.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -24,28 +22,28 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @Getter
 @Entity
-@Table(name = "users")
+@Table(name = "order_details")
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class User extends BaseEntity implements Serializable{
-	
-	private static final long serialVersionUID = 3379374994275165380L;
+public class OrderDetail implements Serializable {
+
+	private static final long serialVersionUID = -1705231188251117243L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
-	String username;
-	String password;
-	String fullname;
-	String email;
-	String avatarUrl;
+	Double price;
+	Integer quantity;
 	
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-	@JsonIgnore
-	List<UserRole> userRoles;
+	@ManyToOne
+	@JoinColumn(name = "orderId", referencedColumnName = "id")
+	@JsonIgnoreProperties
+	Order order;
 	
-	@OneToMany(mappedBy = "user")
-	@JsonIgnore
-	List<Order> order;
+	@ManyToOne
+	@JoinColumn(name = "productId", referencedColumnName = "id")
+	@JsonIgnoreProperties
+	Product product;
+	
 }

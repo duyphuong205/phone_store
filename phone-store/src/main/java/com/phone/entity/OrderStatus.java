@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,28 +23,21 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @Getter
 @Entity
-@Table(name = "users")
+@Table(name = "order_status")
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class User extends BaseEntity implements Serializable{
-	
-	private static final long serialVersionUID = 3379374994275165380L;
+public class OrderStatus extends BaseEntity implements Serializable {
+
+
+	private static final long serialVersionUID = 1815090295668572651L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
-	String username;
-	String password;
-	String fullname;
-	String email;
-	String avatarUrl;
+	Integer status;
 	
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-	@JsonIgnore
-	List<UserRole> userRoles;
-	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "orderStatus")
 	@JsonIgnore
 	List<Order> order;
 }

@@ -1,17 +1,16 @@
 package com.phone.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.phone.entity.base.BaseEntity;
 
 import lombok.AccessLevel;
@@ -24,28 +23,21 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @Getter
 @Entity
-@Table(name = "users")
+@Table(name = "multiple_images")
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class User extends BaseEntity implements Serializable{
-	
-	private static final long serialVersionUID = 3379374994275165380L;
-	
+public class MultipleImages extends BaseEntity implements Serializable {
+
+	private static final long serialVersionUID = -9189422815627751113L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
-	String username;
-	String password;
-	String fullname;
-	String email;
-	String avatarUrl;
-	
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-	@JsonIgnore
-	List<UserRole> userRoles;
-	
-	@OneToMany(mappedBy = "user")
-	@JsonIgnore
-	List<Order> order;
+	String imageUrl;
+
+	@ManyToOne
+	@JoinColumn(name = "productId", referencedColumnName = "id")
+	@JsonIgnoreProperties
+	Product product;
 }
