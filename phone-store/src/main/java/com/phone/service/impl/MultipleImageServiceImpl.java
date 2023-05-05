@@ -6,37 +6,37 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.phone.entity.MultipleImages;
-import com.phone.repo.MultipleImagesRepo;
-import com.phone.service.MultipleImagesService;
+import com.phone.entity.MultipleImage;
+import com.phone.repo.MultipleImageRepo;
+import com.phone.service.MultipleImageService;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 @Transactional(rollbackFor = Throwable.class)
-public class MultipleImagesImpl implements MultipleImagesService {
+public class MultipleImageServiceImpl implements MultipleImageService {
 
-	private final MultipleImagesRepo multipleImagesRepo;
+	private final MultipleImageRepo multipleImagesRepo;
 
 	@Override
-	public List<MultipleImages> getAll() {
+	public List<MultipleImage> getAll() {
 		return multipleImagesRepo.findAll();
 	}
 
 	@Override
-	public MultipleImages findById(Long id) {
-		Optional<MultipleImages> multipleImages = multipleImagesRepo.findById(id);
+	public MultipleImage findById(Long id) {
+		Optional<MultipleImage> multipleImages = multipleImagesRepo.findById(id);
 		return multipleImages.isPresent() ? multipleImages.get() : null;
 	}
 
 	@Override
-	public MultipleImages create(MultipleImages entity) {
+	public MultipleImage create(MultipleImage entity) {
 		return multipleImagesRepo.save(entity);
 	}
 
 	@Override
-	public MultipleImages update(MultipleImages entity) {
+	public MultipleImage update(MultipleImage entity) {
 		return multipleImagesRepo.save(entity);
 	}
 

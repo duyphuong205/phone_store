@@ -47,5 +47,5 @@ public class User extends BaseEntity implements Serializable{
 	
 	@OneToMany(mappedBy = "user")
 	@JsonIgnore
-	List<Order> order;
+	List<Order> orders;
 }

@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 @Transactional(rollbackFor = Throwable.class)
-public class OrderDetailImpl implements OrderDetailService {
+public class OrderDetailServiceImpl implements OrderDetailService {
 
 	private final OrderDetailRepo orderDetailRepo;
 

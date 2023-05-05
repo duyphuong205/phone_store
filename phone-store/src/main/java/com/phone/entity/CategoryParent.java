@@ -38,5 +38,5 @@ public class CategoryParent extends BaseEntity implements Serializable {
 	
 	@OneToMany(mappedBy = "categoryParent")
 	@JsonIgnore
-	List<Category> category;
+	List<Category> categories;
 }

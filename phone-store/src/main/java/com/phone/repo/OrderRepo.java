@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.phone.entity.Order;
 
 @Repository
-public interface OrderRepo extends JpaRepository<Order, Long> {
+public interface OrderRepo extends JpaRepository<Order, String> {
 
 }

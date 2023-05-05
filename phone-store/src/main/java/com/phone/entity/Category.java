@@ -46,5 +46,5 @@ public class Category extends BaseEntity implements Serializable {
 	
 	@OneToMany(mappedBy = "category")
 	@JsonIgnore
-	List<Product> product;
+	List<Product> products;
 }

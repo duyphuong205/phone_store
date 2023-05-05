@@ -27,7 +27,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class MultipleImages extends BaseEntity implements Serializable {
+public class MultipleImage extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = -9189422815627751113L;
 

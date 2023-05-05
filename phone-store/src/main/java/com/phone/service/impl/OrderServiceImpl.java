@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 @Transactional(rollbackFor = Throwable.class)
-public class OrderImpl implements OrderService {
+public class OrderServiceImpl implements OrderService {
 
 	private final OrderRepo orderRepo;
 
@@ -26,7 +26,7 @@ public class OrderImpl implements OrderService {
 
 	@Override
 	public Order findById(Long id) {
-		Optional<Order> order = orderRepo.findById(id);
+		Optional<Order> order = orderRepo.findById(id.toString());
 		return order.isPresent() ? order.get() : null;
 	}
 
@@ -42,7 +42,7 @@ public class OrderImpl implements OrderService {
 
 	@Override
 	public void delete(Long id) {
-		orderRepo.deleteById(id);
+		orderRepo.deleteById(id.toString());
 
 	}
 

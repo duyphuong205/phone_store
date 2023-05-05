@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 @Transactional(rollbackFor = Throwable.class)
-public class CategoryParentImpl implements CategoryParentService {
+public class CategoryParentServiceImpl implements CategoryParentService {
 
 	private final CategoryParentRepo categoryParentRepo;
 

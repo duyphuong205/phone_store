@@ -53,11 +53,11 @@ public class Product extends BaseEntity implements Serializable {
 	
 	@OneToMany(mappedBy = "product")
 	@JsonIgnore
-	List<MultipleImages> multipleImage;
+	List<MultipleImage> multipleImages;
 	
 	@OneToMany(mappedBy = "product")
 	@JsonIgnore
-	List<OrderDetail> orderDetail;
+	List<OrderDetail> orderDetails;
 	
 	
 

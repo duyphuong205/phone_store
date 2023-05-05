@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -32,28 +30,25 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Order extends BaseEntity implements Serializable {
 
-
 	private static final long serialVersionUID = -3216098580149021036L;
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long id;
+	String id;
 	String address;
 	String phone;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "userId", referencedColumnName = "id")
 	@JsonIgnoreProperties
 	User user;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "orderStatusId", referencedColumnName = "id")
 	@JsonIgnoreProperties
 	OrderStatus orderStatus;
-	
 
 	@OneToMany(mappedBy = "order")
 	@JsonIgnore
-	List<OrderDetail> orderDetail;
-	
+	List<OrderDetail> orderDetails;
+
 }
