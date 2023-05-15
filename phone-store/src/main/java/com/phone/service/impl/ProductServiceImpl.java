@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.phone.constants.ActiveConstant;
 import com.phone.entity.Product;
 import com.phone.repo.ProductRepo;
 import com.phone.service.ProductService;
@@ -44,6 +45,11 @@ public class ProductServiceImpl implements ProductService {
 	public void delete(Long id) {
 		productRepo.deleteById(id);
 
+	}
+
+	@Override
+	public List<Product> getAllByIsActive() {
+		return productRepo.findAllByIsActive(ActiveConstant.ENABLE);
 	}
 
 }

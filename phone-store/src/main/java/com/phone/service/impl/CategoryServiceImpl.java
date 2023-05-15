@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.phone.constants.ActiveConstant;
 import com.phone.entity.Category;
 import com.phone.repo.CategoryRepo;
 import com.phone.service.CategoryService;
@@ -44,6 +45,11 @@ public class CategoryServiceImpl implements CategoryService {
 	public void delete(Long id) {
 		categoryRepo.deleteById(id);
 
+	}
+
+	@Override
+	public List<Category> getAllByIsActive() {
+		return categoryRepo.findAllByIsActive(ActiveConstant.ENABLE);
 	}
 
 }

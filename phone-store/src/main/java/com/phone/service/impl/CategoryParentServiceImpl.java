@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.phone.constants.ActiveConstant;
 import com.phone.entity.CategoryParent;
 import com.phone.repo.CategoryParentRepo;
 import com.phone.service.CategoryParentService;
@@ -44,6 +45,11 @@ public class CategoryParentServiceImpl implements CategoryParentService {
 	public void delete(Long id) {
 		categoryParentRepo.deleteById(id);
 
+	}
+
+	@Override
+	public List<CategoryParent> getAllByIsActive() {
+		return categoryParentRepo.findAllByIsActive(ActiveConstant.ENABLE);
 	}
 
 }
